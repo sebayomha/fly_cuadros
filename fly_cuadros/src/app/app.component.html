@@ -1,1 +1,6 @@
-Fly Cuadros
+<mat-drawer-container class="full-height">
+  <mat-drawer #drawer mode="side">Fly cuadros</mat-drawer>
+  <mat-drawer-content>
+    <button mat-raised-button (click)="drawer.toggle()">AbrirMenu</button>
+  </mat-drawer-content>
+</mat-drawer-container>
