@@ -1,6 +1,7 @@
 @import '~@angular/material/theming';
 
 .image-card {
+  @include mat-elevation-transition;
   &:hover {
     cursor: pointer;
     @include mat-elevation(12);
