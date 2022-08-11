@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkfly_cuadros=self.webpackChunkfly_cuadros||[]).push([[592],{4466:(s,u,a)=>{a.d(u,{m:()=>d});var _=a(4872),r=a(5e3);let d=(()=>{class e{}return e.\u0275fac=function(l){return new(l||e)},e.\u0275mod=r.oAB({type:e}),e.\u0275inj=r.cJS({providers:[],imports:[[_.q]]}),e})()}}]);
