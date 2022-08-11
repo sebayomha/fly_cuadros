@@ -3,4 +3,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 40px;
+    @media (max-width: 800px) {
+        flex-direction: column;
+    }
 }
