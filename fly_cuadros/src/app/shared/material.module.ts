@@ -5,10 +5,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card'
 import { MatRippleModule } from '@angular/material/core';
+import { MatBottomSheetModule, MAT_BOTTOM_SHEET_DEFAULT_OPTIONS } from '@angular/material/bottom-sheet';
+import { MatListModule } from '@angular/material/list';
 @NgModule({
   declarations: [
   ],
-  exports:[ MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatCardModule, MatRippleModule ],
-  providers: [],
+  exports:[ MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatCardModule, MatRippleModule, MatBottomSheetModule, MatListModule ],
+  providers: [
+    {provide: MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, useValue: {panelClass: 'bottom-sheet-custom-container', hasBackdrop: true}}
+  ],
 })
 export class MaterialModule { }
