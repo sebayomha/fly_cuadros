@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common'
 
 import { DashboardComponent } from './dashboard.component';
 import { RouterModule } from '@angular/router';
+import { MaterialModule } from 'src/app/shared/material.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     DashboardRoutingModule,
     SharedModule,
+    MaterialModule,
     RouterModule
   ],
   providers: [],

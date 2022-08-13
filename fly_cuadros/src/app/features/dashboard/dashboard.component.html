@@ -1,5 +1,9 @@
 <div class="image-container">
     <ng-container *ngFor="let cardNum of [1,2,3,4,5,6,7,8,9]; let index = index">
-        <app-image-card style="flex: 1 1 25%;" [routerLink]="['cuadros', index]" [cardInfo]="cardNum"></app-image-card>
+        <app-image-card style="flex: 1 1 25%;" [routerLink]="['cuadros', index]" [cardInfo]="cardNum">
+            <ng-container slot="actions">
+                <button mat-button>INGRESAR</button>
+            </ng-container>
+        </app-image-card>
     </ng-container>
 </div>

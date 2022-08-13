@@ -3,6 +3,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { PaintingCatalogComponent } from './painting-catalog.component';
 import { PaintingCatalogRoutingModule } from './painting-catalog-routing.module';
+import { MaterialModule } from 'src/app/shared/material.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { PaintingCatalogRoutingModule } from './painting-catalog-routing.module'
   imports: [
     CommonModule,
     PaintingCatalogRoutingModule,
-    SharedModule
+    SharedModule,
+    MaterialModule
   ],
   providers: [],
 })

@@ -2,8 +2,98 @@
     Ingresaste a ver el catalogo del cuadro: {{paintingCode}}
 </section>
 
+<section class="filter-section">
+    <mat-chip-list [multiple]="false" [selectable]="true" (change)="onTeamChanges($event)">
+        <mat-chip>
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116649/aldosivi.png" />
+        </mat-chip>
+        <mat-chip color="primary">
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116700/argentinos-juniors.png"/>
+        </mat-chip>
+        <mat-chip color="accent">
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116701/arsenal.png"/>
+        </mat-chip>
+        <mat-chip color="accent">
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116650/atletico-tucuman.png"/>
+        </mat-chip>
+        <mat-chip color="accent">
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116702/banfield.png"/>
+        </mat-chip>
+        <mat-chip>
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116649/aldosivi.png" />
+        </mat-chip>
+        <mat-chip color="primary">
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116700/argentinos-juniors.png"/>
+        </mat-chip>
+        <mat-chip color="accent">
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116701/arsenal.png"/>
+        </mat-chip>
+        <mat-chip color="accent">
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116650/atletico-tucuman.png"/>
+        </mat-chip>
+        <mat-chip color="accent">
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116702/banfield.png"/>
+        </mat-chip>
+        <mat-chip>
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116649/aldosivi.png" />
+        </mat-chip>
+        <mat-chip color="accent">
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116650/atletico-tucuman.png"/>
+        </mat-chip>
+        <mat-chip color="accent">
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116702/banfield.png"/>
+        </mat-chip>
+        <mat-chip>
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116649/aldosivi.png" />
+        </mat-chip>
+        <mat-chip color="accent">
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116650/atletico-tucuman.png"/>
+        </mat-chip>
+        <mat-chip color="accent">
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116702/banfield.png"/>
+        </mat-chip>
+        <mat-chip>
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116649/aldosivi.png" />
+        </mat-chip>
+        <mat-chip color="accent">
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116650/atletico-tucuman.png"/>
+        </mat-chip>
+        <mat-chip color="accent">
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116702/banfield.png"/>
+        </mat-chip>
+        <mat-chip>
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116649/aldosivi.png" />
+        </mat-chip>
+        <mat-chip color="accent">
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116650/atletico-tucuman.png"/>
+        </mat-chip>
+        <mat-chip color="accent">
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116702/banfield.png"/>
+        </mat-chip>
+        <mat-chip>
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116649/aldosivi.png" />
+        </mat-chip>
+        <mat-chip color="accent">
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116650/atletico-tucuman.png"/>
+        </mat-chip>
+        <mat-chip color="accent">
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116702/banfield.png"/>
+        </mat-chip>
+        <mat-chip>
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116649/aldosivi.png" />
+        </mat-chip>
+        <mat-chip>
+            <img matChipAvatar src="https://media.tycsports.com/files/2020/09/04/116649/aldosivi.png" />
+        </mat-chip>
+      </mat-chip-list>
+</section>
+
 <div class="image-container">
     <ng-container *ngFor="let cardNum of [1,2,3,4,5,6,7,8,9]; let index = index">
-        <app-image-card style="flex: 1 1 25%;" (click)="openReservationConfirmation()" [cardInfo]="cardNum"></app-image-card>
+        <app-image-card style="flex: 1 1 25%;" (click)="openReservationConfirmation()" [cardInfo]="cardNum">
+            <ng-container slot="actions">
+                <button mat-raised-button class="full-width" color="primary">RESERVAR</button>
+            </ng-container>
+        </app-image-card>
     </ng-container>
 </div>

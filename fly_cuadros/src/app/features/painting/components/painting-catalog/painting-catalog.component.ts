@@ -38,4 +38,8 @@ export class PaintingCatalogComponent implements OnInit, OnDestroy {
     })
   }
 
+  public onTeamChanges($event: any): void {
+    console.log($event)
+  }
+
 }

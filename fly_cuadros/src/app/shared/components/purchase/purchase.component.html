@@ -4,27 +4,24 @@
             <mat-card-title>Confirmar reserva</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <mat-nav-list>
-                <a href="https://keep.google.com/" mat-list-item>
-                <span mat-line>Google Keep</span>
-                <span mat-line>Add to a note</span>
-                </a>
-            
-                <a href="https://docs.google.com/" mat-list-item>
-                <span mat-line>Google Docs</span>
-                <span mat-line>Embed in a document</span>
-                </a>
-            
-                <a href="https://plus.google.com/" mat-list-item>
-                <span mat-line>Google Plus</span>
-                <span mat-line>Share with your friends</span>
-                </a>
-            
-                <a href="https://hangouts.google.com/" mat-list-item>
-                <span mat-line>Google Hangouts</span>
-                <span mat-line>Show to your coworkers</span>
-                </a>
-            </mat-nav-list>
+            <mat-list>
+                <mat-list-item>
+                    <img mat-card-avatar src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                    <a mat-list-item>
+                        <span mat-line>Shiba Inu</span>
+                    </a>
+                </mat-list-item>
+                <mat-list-item>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span mat-line>Precio Final</span>
+                        <span mat-line>$50.000</span>
+                    </div>
+                </mat-list-item>
+            </mat-list>
+            <mat-divider></mat-divider>
+            <div>
+
+            </div>
         </mat-card-content>
         <mat-card-actions style="margin: 0 16px;">
             <button mat-raised-button type="submit" class="full-width" color="primary">CONFIRMAR</button>

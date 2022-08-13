@@ -9,3 +9,17 @@
         flex-direction: column;
     }
 }
+
+.filter-section {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.mat-chip {
+    padding: 0 !important;
+}
+
+.mat-chip-avatar {
+    width: 32px !important;
+    height: 32px !important;
+}
