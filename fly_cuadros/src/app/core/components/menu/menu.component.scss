@@ -1,0 +1,9 @@
+.tree {
+    padding: 24px;
+    .mat-tree-node.child {
+        &:hover {
+            background: #eeeeee;
+            cursor: pointer;
+        }
+    }
+}

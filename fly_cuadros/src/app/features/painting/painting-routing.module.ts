@@ -11,10 +11,6 @@ const routes: Routes = [
           (await import('./components/painting-catalog/painting-catalog.module')).PaintingCatalogModule,
       }
     ],
-  },
-  {
-    path: '**',
-    redirectTo: 'fsafsaf'
   }
 ];
 

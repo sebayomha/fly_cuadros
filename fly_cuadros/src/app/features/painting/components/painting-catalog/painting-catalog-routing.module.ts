@@ -6,6 +6,7 @@ const routes: Routes = [
   {
     path: '',
     component: PaintingCatalogComponent,
+    data: { animation: 'PaintingPage' }
   },
 ];
 

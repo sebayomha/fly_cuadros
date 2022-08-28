@@ -21,6 +21,7 @@ export class PaintingCatalogComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    console.log("ENTRE")
   }
 
   public ngOnDestroy(): void {

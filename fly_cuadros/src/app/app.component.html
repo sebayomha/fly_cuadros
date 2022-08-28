@@ -1,5 +1,7 @@
 <mat-drawer-container class="full-height">
-  <mat-drawer #drawer mode="side">Fly cuadros</mat-drawer>
+  <mat-drawer style="width: 300px;" #drawer mode="side">
+    <app-menu></app-menu>
+  </mat-drawer>
   <mat-drawer-content>
     <mat-toolbar>
       <button mat-icon-button (click)="drawer.toggle()">
@@ -7,7 +9,7 @@
       </button>
       <span>Fly cuadros</span>
     </mat-toolbar>
-    <main class="container">
+    <main class="container" [@routeAnimations]="getRouteAnimationData()">
       <router-outlet></router-outlet>
     </main>
   </mat-drawer-content>
