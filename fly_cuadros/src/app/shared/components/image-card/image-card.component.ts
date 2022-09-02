@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-
+import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-image-card',
   templateUrl: './image-card.component.html',
@@ -7,9 +7,18 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ImageCardComponent implements OnInit {
   @Input() public cardInfo: any;
-  constructor() { }
+  @ViewChild('thumbNailDialog') thumbNailDialog!: TemplateRef<any>;
+
+  constructor(public readonly dialog: MatDialog) {}
+
 
   ngOnInit(): void {
+  }
+
+  openThumbnail(): void {
+    this.dialog.open(this.thumbNailDialog, {
+      panelClass: ['no-padding-dialog', 'width80']
+    });
   }
 
 }

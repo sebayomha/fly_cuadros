@@ -9,3 +9,29 @@
         flex-direction: column;
     }
 }
+
+::ng-deep .image-wrapper {
+    .overlay {
+        display: none;
+    }
+
+    &:hover {
+        .overlay {
+            display: flex;
+        }
+        mat-card {
+            opacity: 0.3;
+        }
+    }
+}
+
+.overlay {
+    height: 60px;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    justify-content: center;
+    button {
+        width: 170px;
+    }
+}

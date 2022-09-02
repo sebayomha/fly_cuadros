@@ -1,5 +1,9 @@
 @import '~@angular/material/theming';
 
+:host {
+  position: relative;
+}
+
 .image-card {
   @include mat-elevation-transition;
   &:hover {

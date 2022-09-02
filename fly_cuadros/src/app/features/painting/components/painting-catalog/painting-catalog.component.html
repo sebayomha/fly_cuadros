@@ -90,9 +90,9 @@
 
 <div class="image-container">
     <ng-container *ngFor="let cardNum of [1,2,3,4,5,6,7,8,9]; let index = index">
-        <app-image-card style="flex: 1 1 25%;" (click)="openReservationConfirmation()" [cardInfo]="cardNum">
+        <app-image-card style="flex: 1 1 25%;" [cardInfo]="cardNum">
             <ng-container slot="actions">
-                <button mat-raised-button class="full-width" color="primary">RESERVAR</button>
+                <button mat-raised-button class="full-width" color="primary" (click)="openReservationConfirmation()">RESERVAR</button>
             </ng-container>
         </app-image-card>
     </ng-container>

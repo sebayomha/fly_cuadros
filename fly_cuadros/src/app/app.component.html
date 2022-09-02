@@ -4,10 +4,7 @@
   </mat-drawer>
   <mat-drawer-content>
     <mat-toolbar>
-      <button mat-icon-button (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span>Fly cuadros</span>
+      <app-header (onDrawerToggle)="drawer.toggle()"></app-header>
     </mat-toolbar>
     <main class="container" [@routeAnimations]="getRouteAnimationData()">
       <router-outlet></router-outlet>
