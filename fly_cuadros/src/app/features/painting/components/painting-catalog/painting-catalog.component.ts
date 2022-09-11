@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { ActivatedRoute } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { EVENT_RESULT } from 'src/app/core/constants';
 import { PurchaseComponent } from 'src/app/shared/components/purchase/purchase.component';
 import { PurchaseOutput } from 'src/app/shared/components/purchase/purchase.model';
+import { Painting } from './models/painting.model';
 import { PaintingServiceService } from './services/painting-service.service';
 
 @Component({
@@ -13,7 +14,8 @@ import { PaintingServiceService } from './services/painting-service.service';
   styleUrls: ['./painting-catalog.component.scss']
 })
 export class PaintingCatalogComponent implements OnInit, OnDestroy {
-  public paintingCode!: string | null;
+  public paintingCode!: string;
+  public paintings$!: Observable<Painting[]>
 
   private readonly onDestroy$ = new Subject<void>();
 
@@ -22,13 +24,11 @@ export class PaintingCatalogComponent implements OnInit, OnDestroy {
     private readonly bottomSheet: MatBottomSheet,
     private readonly paintingService: PaintingServiceService
     ) { 
-    this.paintingCode = activatedRoute.snapshot.paramMap.get('code')
+    this.paintingCode = activatedRoute.snapshot.paramMap.get('code') as string;
   }
 
-  ngOnInit(): void {
-    this.paintingService.getPaintings().subscribe((data) => {
-      console.log("DATA:: ", data)
-    })
+  public ngOnInit(): void {
+    this.getPaintings();
     console.log("ENTRE")
   }
 
@@ -49,6 +49,10 @@ export class PaintingCatalogComponent implements OnInit, OnDestroy {
 
   public onTeamChanges($event: any): void {
     console.log($event)
+  }
+
+  private getPaintings(): void {
+    this.paintings$ = this.paintingService.getPaintings(this.paintingCode);
   }
 
 }
