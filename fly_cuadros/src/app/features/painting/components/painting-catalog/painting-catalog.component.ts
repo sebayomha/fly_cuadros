@@ -5,6 +5,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { EVENT_RESULT } from 'src/app/core/constants';
 import { PurchaseComponent } from 'src/app/shared/components/purchase/purchase.component';
 import { PurchaseOutput } from 'src/app/shared/components/purchase/purchase.model';
+import { PaintingServiceService } from './services/painting-service.service';
 
 @Component({
   selector: 'app-painting-catalog',
@@ -16,11 +17,18 @@ export class PaintingCatalogComponent implements OnInit, OnDestroy {
 
   private readonly onDestroy$ = new Subject<void>();
 
-  constructor(private readonly activatedRoute: ActivatedRoute, private readonly bottomSheet: MatBottomSheet) { 
+  constructor(
+    private readonly activatedRoute: ActivatedRoute, 
+    private readonly bottomSheet: MatBottomSheet,
+    private readonly paintingService: PaintingServiceService
+    ) { 
     this.paintingCode = activatedRoute.snapshot.paramMap.get('code')
   }
 
   ngOnInit(): void {
+    this.paintingService.getPaintings().subscribe((data) => {
+      console.log("DATA:: ", data)
+    })
     console.log("ENTRE")
   }
 

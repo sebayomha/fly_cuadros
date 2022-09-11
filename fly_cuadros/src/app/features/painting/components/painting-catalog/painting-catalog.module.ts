@@ -5,7 +5,6 @@ import { PaintingCatalogComponent } from './painting-catalog.component';
 import { PaintingCatalogRoutingModule } from './painting-catalog-routing.module';
 import { MaterialModule } from 'src/app/shared/material.module';
 
-
 @NgModule({
   declarations: [
     PaintingCatalogComponent
