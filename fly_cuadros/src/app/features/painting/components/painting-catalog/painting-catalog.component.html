@@ -1,5 +1,5 @@
-<section>
-    Ingresaste a ver el catalogo del cuadro: {{paintingCode}}
+<section *ngIf="boxDetail$ | async as boxDetail">
+    Ingresaste a ver el catalogo del cuadro: {{boxDetail?.nombre}}
 </section>
 
 <section class="filter-section">
@@ -89,8 +89,8 @@
 </section>
 
 <div class="image-container">
-    <ng-container *ngFor="let cardNum of [1,2,3,4,5,6,7,8,9]; let index = index">
-        <app-image-card style="flex: 1 1 25%;" [cardInfo]="cardNum">
+    <ng-container *ngFor="let painting of paintings$ | async">
+        <app-image-card style="flex: 0 1 33%;" [cardInfo]="painting" [showRipple]="false">
             <ng-container slot="actions">
                 <button mat-raised-button class="full-width" color="primary" (click)="openReservationConfirmation()">RESERVAR</button>
             </ng-container>

@@ -3,6 +3,7 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { EVENT_RESULT } from 'src/app/core/constants';
+import { Box } from 'src/app/features/dashboard/models/dashboard.model';
 import { PurchaseComponent } from 'src/app/shared/components/purchase/purchase.component';
 import { PurchaseOutput } from 'src/app/shared/components/purchase/purchase.model';
 import { Painting } from './models/painting.model';
@@ -16,6 +17,7 @@ import { PaintingServiceService } from './services/painting-service.service';
 export class PaintingCatalogComponent implements OnInit, OnDestroy {
   public paintingCode!: string;
   public paintings$!: Observable<Painting[]>
+  public boxDetail$!: Observable<Box | undefined>
 
   private readonly onDestroy$ = new Subject<void>();
 
@@ -29,7 +31,7 @@ export class PaintingCatalogComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.getPaintings();
-    console.log("ENTRE")
+    this.getBoxDetail();
   }
 
   public ngOnDestroy(): void {
@@ -53,6 +55,10 @@ export class PaintingCatalogComponent implements OnInit, OnDestroy {
 
   private getPaintings(): void {
     this.paintings$ = this.paintingService.getPaintings(this.paintingCode);
+  }
+
+  private getBoxDetail(): void {
+    this.boxDetail$ = this.paintingService.getBoxDetail(this.paintingCode);
   }
 
 }

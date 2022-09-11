@@ -1,3 +1,5 @@
 export enum FirebaseCollections {
-    PAINTINGS="cuadros"
+    PAINTINGS="cuadros",
+    BOX_TYPES="tipo_cuadro",
+    MENU="menu"
 }

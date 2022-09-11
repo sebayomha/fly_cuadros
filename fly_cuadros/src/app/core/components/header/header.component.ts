@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   @Output() public onDrawerToggle = new EventEmitter<void>();
+  
   constructor(private readonly router: Router) { }
 
   ngOnInit(): void {

@@ -4,6 +4,7 @@ export interface Painting {
     imagen: string;
     nombre: string;
     tipo_cuadro: string;
+    id: string;
 }
 
 export const DB_BOX_TYPE_FIELD = "tipo_cuadro"

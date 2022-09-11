@@ -4,7 +4,7 @@ export enum EVENT_RESULT {
     CONFIRM = "CONFIRMAR"
 }
 
-export const MOCK_MENU: MenuNode[] = [
+/* export const MOCK_MENU: MenuNode[] = [
     {
       name: 'Imágenes',
       id: 0,
@@ -39,4 +39,4 @@ export const MOCK_MENU: MenuNode[] = [
         },
       ],
     },
-];
+]; */

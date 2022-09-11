@@ -1,16 +1,17 @@
 import { FlatTreeControl } from '@angular/cdk/tree';
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatTree, MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { Router } from '@angular/router';
-import { MOCK_MENU } from '../../constants';
+import { Subject, takeUntil } from 'rxjs';
 import { MenuFlatNode, MenuNode } from './menu.model';
+import { MenuService } from './services/menu-service.service';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements OnInit, AfterViewInit {
+export class MenuComponent implements OnInit, OnDestroy {
   @ViewChild(MatTree) public tree!: MatTree<any>;
   private _transformer = (node: MenuNode, level: number) => {
     return {
@@ -33,16 +34,23 @@ export class MenuComponent implements OnInit, AfterViewInit {
   );
   hasChild = (_: number, node: MenuFlatNode) => node.expandable;
   public readonly menu = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
-
-  constructor(private readonly router: Router) { 
-    this.menu.data = MOCK_MENU;
+  
+  private readonly onDestroy$ = new Subject<void>();
+  
+  constructor(private readonly router: Router, private readonly menuService: MenuService) { 
   }
-
+  
   public ngOnInit(): void {
+    this.menuService.getMenu().pipe(takeUntil(this.onDestroy$)).subscribe((menu) => {
+      this.menu.data = menu;
+      this.tree.treeControl.expandAll();
+      
+    })
   }
-
-  public ngAfterViewInit(): void {
-    this.tree.treeControl.expandAll();
+  
+  public ngOnDestroy(): void {
+   this.onDestroy$.next();
+   this.onDestroy$.complete();
   }
 
   public navigate(node: MenuNode): void {

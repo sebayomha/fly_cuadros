@@ -1,9 +1,9 @@
 <div class="image-container">
-    <ng-container *ngFor="let cardNum of [1,2,3,4,5,6,7,8,9]; let index = index">
-        <app-image-card class="image-wrapper" style="flex: 1 1 25%;" [routerLink]="['cuadros', index]" [cardInfo]="cardNum">
-            <div class="overlay" slot="overlay">
+    <ng-container *ngFor="let box of boxTypes$ | async">
+        <app-image-card class="image-wrapper" style="flex: 0 1 25%;" [routerLink]="['cuadros', box.id]" [cardInfo]="box">
+           <!--  <div class="overlay" slot="overlay">
                 <button mat-raised-button color="primary">VER CUADROS</button>
-            </div>
+            </div> -->
         </app-image-card>
     </ng-container>
 </div>

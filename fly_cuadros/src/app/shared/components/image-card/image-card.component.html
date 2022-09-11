@@ -1,31 +1,41 @@
-<mat-card class="image-card" mat-ripple>
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Shiba Inu</mat-card-title>
-      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" (click)="openThumbnail()" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-      <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
-      </p>
-    <div>
-    </div>
-    </mat-card-content>
-    <mat-card-footer>
-      <mat-card-actions>
-        <ng-content slot="actions"></ng-content>
-      </mat-card-actions>
-    </mat-card-footer>
-</mat-card>
+<ng-container *ngIf="cardInfo">
+  <ng-container *ngIf="showRipple; else noRippleCard">
+    <mat-card class="image-card" mat-ripple>
+      <ng-template *ngTemplateOutlet="cardTemplate"></ng-template>
+    </mat-card>
+  </ng-container>
+  <ng-template #noRippleCard>
+    <mat-card class="image-card">
+      <ng-template *ngTemplateOutlet="cardTemplate"></ng-template>
+    </mat-card>
+  </ng-template>
 <ng-content slot="overlay"></ng-content>
+
+<ng-template #cardTemplate>
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title>{{cardInfo.nombre}}</mat-card-title>
+    <mat-card-subtitle>{{cardInfo.descripcion}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="cardInfo.imagen" (click)="openThumbnail()">
+  <mat-card-content>
+    <p>
+      {{cardInfo.descripcion}}
+    </p>
+  <div>
+  </div>
+  </mat-card-content>
+  <mat-card-footer>
+    <mat-card-actions class="image-actions">
+      <ng-content slot="actions"></ng-content>
+    </mat-card-actions>
+  </mat-card-footer>
+</ng-template>
 
 <ng-template #thumbNailDialog>
   <lib-ngx-image-zoom
-  thumbImage="https://material.angular.io/assets/img/examples/shiba2.jpg"
-  fullImage="https://material.angular.io/assets/img/examples/shiba2.jpg"
+  [thumbImage]="cardInfo.imagen"
+  [fullImage]="cardInfo.imagen"
   [enableLens]="true"
   [circularLens]="true"
   [magnification]="2"
@@ -33,5 +43,7 @@
   [lensHeight]="150"
 ></lib-ngx-image-zoom>
 </ng-template>
+</ng-container>
+
 
 

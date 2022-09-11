@@ -1,5 +1,5 @@
 export interface MenuNode {
-    name: string;
+    nombre: string;
     id: number;
     basePath: string;
     isExpanded?: boolean;
@@ -8,7 +8,7 @@ export interface MenuNode {
 
 export interface MenuFlatNode {
     expandable: boolean;
-    name: string;
+    nombre: string;
     level: number;
     id: number;
     basePath: string;

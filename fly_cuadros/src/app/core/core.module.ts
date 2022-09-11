@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { MaterialModule } from '../shared/material.module'
 import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './components/header/header.component'
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -9,6 +10,7 @@ import { HeaderComponent } from './components/header/header.component'
     HeaderComponent,
   ],
   imports: [
+    CommonModule,
     MaterialModule,
   ],
   exports: [MenuComponent, HeaderComponent],
