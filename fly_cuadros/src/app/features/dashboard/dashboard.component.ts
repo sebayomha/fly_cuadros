@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { MeasuresService } from 'src/app/core/services/measures.service';
 import { Box } from './models/dashboard.model';
 import { DashboardService } from './services/dashboard.service';
 
@@ -15,7 +16,7 @@ export class DashboardComponent implements OnInit {
   constructor(private readonly dashboardService: DashboardService) {}
 
   public ngOnInit(): void {
-    this.boxTypes$ = this.dashboardService.getBoxTypes();  
+    this.boxTypes$ = this.dashboardService.getBoxTypes();
   }
 
 }

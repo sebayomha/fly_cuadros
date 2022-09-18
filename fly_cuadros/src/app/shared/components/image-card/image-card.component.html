@@ -15,12 +15,19 @@
   <mat-card-header>
     <div mat-card-avatar></div>
     <mat-card-title>{{cardInfo.nombre}}</mat-card-title>
-    <mat-card-subtitle>{{cardInfo.descripcion}}</mat-card-subtitle>
+    <mat-card-subtitle>
+      <mat-chip-list>
+        <mat-chip [color]="cardInfo?.medida_data?.color" selected> {{cardInfo?.medida_data?.tamanio}}</mat-chip>
+      </mat-chip-list>
+    </mat-card-subtitle>
   </mat-card-header>
   <img mat-card-image [src]="cardInfo.imagen" (click)="openThumbnail()">
   <mat-card-content>
     <p>
       {{cardInfo.descripcion}}
+    </p>
+    <p>
+      {{cardInfo?.medida_data?.precio | currency }}
     </p>
   <div>
   </div>

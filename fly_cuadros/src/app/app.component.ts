@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ChildrenOutletContexts } from '@angular/router';
 import { slideInAnimation } from './core/animations';
+import { MeasuresService } from './core/services/measures.service';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,13 @@ import { slideInAnimation } from './core/animations';
     slideInAnimation
   ]
 })
-export class AppComponent {
-  constructor(private readonly contexts: ChildrenOutletContexts) {}
+export class AppComponent implements OnInit {
+  
+  constructor(private readonly contexts: ChildrenOutletContexts, private readonly measuresService: MeasuresService) {}
+  
+  public ngOnInit(): void {
+    this.measuresService.loadMeasures();
+  }
 
   public getRouteAnimationData() {
     return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
