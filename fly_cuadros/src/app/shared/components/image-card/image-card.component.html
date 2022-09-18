@@ -15,7 +15,7 @@
   <mat-card-header>
     <div mat-card-avatar></div>
     <mat-card-title>{{cardInfo.nombre}}</mat-card-title>
-    <mat-card-subtitle>
+    <mat-card-subtitle *ngIf="cardInfo?.medida_data?.tamanio">
       <mat-chip-list>
         <mat-chip [color]="cardInfo?.medida_data?.color" selected> {{cardInfo?.medida_data?.tamanio}}</mat-chip>
       </mat-chip-list>
@@ -26,8 +26,8 @@
     <p>
       {{cardInfo.descripcion}}
     </p>
-    <p>
-      {{cardInfo?.medida_data?.precio | currency }}
+    <p class="price" *ngIf="cardInfo?.medida_data?.precio">
+      {{cardInfo.medida_data.precio | currency }}
     </p>
   <div>
   </div>
