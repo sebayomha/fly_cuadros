@@ -3,4 +3,5 @@ export interface Measure {
     precio?: string | undefined;
     color?: string | undefined;
     id?: string | undefined;
+    tipo: string;
 }

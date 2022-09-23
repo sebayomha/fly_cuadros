@@ -9,3 +9,19 @@ mat-list-item {
     display: flex !important;
     gap: 10px;
 }
+
+.purchase-list {
+    mat-list-item {
+        margin-top: 16px;
+    }
+}
+
+.price-container {
+    display: flex; 
+    justify-content: space-between; 
+    gap: 20px;
+    
+    .price {
+        font-weight: 500;
+    }
+}

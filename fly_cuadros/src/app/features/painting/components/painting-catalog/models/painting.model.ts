@@ -7,8 +7,7 @@ export interface Painting {
     nombre: string;
     tipo_cuadro: string;
     id: string;
-    medida: string;
-    medida_data: Measure
+    medidas: Measure[]
 }
 
 export const DB_BOX_TYPE_FIELD = "tipo_cuadro"

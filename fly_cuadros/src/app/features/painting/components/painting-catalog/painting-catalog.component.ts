@@ -39,8 +39,10 @@ export class PaintingCatalogComponent implements OnInit, OnDestroy {
     this.onDestroy$.complete();
   }
 
-  public openReservationConfirmation(): void {
-    this.bottomSheet.open(PurchaseComponent).afterDismissed()
+  public openReservationConfirmation(painting: Painting): void {
+    this.bottomSheet.open(PurchaseComponent, {
+      data: painting
+    }).afterDismissed()
     .pipe(takeUntil(this.onDestroy$))
     .subscribe((result: PurchaseOutput) => {
       if(result && result.event === EVENT_RESULT.CONFIRM) {

@@ -92,7 +92,7 @@
     <ng-container *ngFor="let painting of paintings$ | async">
         <app-image-card style="flex: 0 1 33%;" [cardInfo]="painting" [showRipple]="false">
             <ng-container slot="actions">
-                <button mat-raised-button class="full-width" color="primary" (click)="openReservationConfirmation()">RESERVAR</button>
+                <button mat-raised-button class="full-width" color="primary" (click)="openReservationConfirmation(painting)">RESERVAR</button>
             </ng-container>
         </app-image-card>
     </ng-container>

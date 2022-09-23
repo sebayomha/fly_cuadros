@@ -20,7 +20,7 @@ export class PaintingServiceService {
     }).valueChanges({ idField: 'id' }).pipe(map((paintings) => {
       return paintings.map((painting) => ({
         ...painting, 
-        medida_data: {...this.measuresService.measures$.getValue()?.find(measure => measure.id === painting.medida)}
+        medidas: this.measuresService.measures$.getValue()?.filter(measure => measure.tipo === painting.tipo_cuadro) ?? []
       }))
     }))
   }
