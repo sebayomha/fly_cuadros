@@ -17,7 +17,7 @@ export class PurchaseComponent {
   public measures!: Measure[];
   public painting!: Painting;
   public readonly purchaseForm = this.formBuilder.group({
-    measure: [Validators.required],
+    measure: [null, Validators.required],
     price: null,
   })
 
@@ -38,7 +38,7 @@ export class PurchaseComponent {
   public confirm(): void {
     this._bottomSheetRef.dismiss({
       event: EVENT_RESULT.CONFIRM,
-      data: this.purchaseForm
+      data: {...this.purchaseForm, painting: this.painting}
     });
   }
 

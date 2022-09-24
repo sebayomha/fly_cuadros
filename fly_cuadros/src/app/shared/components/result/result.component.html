@@ -1,0 +1,22 @@
+<div class="result-wrapper">
+  <div class="result-wrapper-text">
+    <span>
+      <mat-icon class="success-color">done</mat-icon>
+    </span>
+    <span [innerHTML]="data.message"></span>
+  </div>
+  <div *ngIf="data.url">
+    <button 
+      mat-button 
+      [color]="'warn'"
+      matTooltip="Copiado!"  
+      #tooltip="matTooltip" 
+      (mouseenter)="$event.stopImmediatePropagation()" 
+      (mouseleave)="$event.stopImmediatePropagation()"
+      (click)="tooltip.toggle()"
+      matTooltipHideDelay="300" 
+      [cdkCopyToClipboard]="data.url">
+       COPIAR
+    </button>
+  </div>
+</div>

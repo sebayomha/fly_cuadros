@@ -1,11 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { filter, map, Observable, Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { EVENT_RESULT } from 'src/app/core/constants';
 import { Box } from 'src/app/features/dashboard/models/dashboard.model';
 import { PurchaseComponent } from 'src/app/shared/components/purchase/purchase.component';
 import { PurchaseOutput } from 'src/app/shared/components/purchase/purchase.model';
+import { ResultComponent } from 'src/app/shared/components/result/result.component';
 import { Painting } from './models/painting.model';
 import { PaintingServiceService } from './services/painting-service.service';
 
@@ -24,7 +26,9 @@ export class PaintingCatalogComponent implements OnInit, OnDestroy {
   constructor(
     private readonly activatedRoute: ActivatedRoute, 
     private readonly bottomSheet: MatBottomSheet,
-    private readonly paintingService: PaintingServiceService
+    private readonly paintingService: PaintingServiceService,
+    private readonly snackBar: MatSnackBar,
+    private readonly renderer2: Renderer2
     ) { 
     this.paintingCode = activatedRoute.snapshot.paramMap.get('code') as string;
   }
@@ -43,12 +47,32 @@ export class PaintingCatalogComponent implements OnInit, OnDestroy {
     this.bottomSheet.open(PurchaseComponent, {
       data: painting
     }).afterDismissed()
-    .pipe(takeUntil(this.onDestroy$))
-    .subscribe((result: PurchaseOutput) => {
-      if(result && result.event === EVENT_RESULT.CONFIRM) {
-        alert("CONFIRMACION:: ABRIR POPUP DE EXITO",)
-      }
+    .pipe(
+      filter((result: PurchaseOutput) =>  result && result.event === EVENT_RESULT.CONFIRM), 
+      map((result) => result.data),
+      switchMap(() => this.snackBar.openFromComponent(ResultComponent, {
+        data: {
+          message: `Reserva confirmada! 
+          Hacé click en <strong style="letter-spacing: 0.5px;"> Copiar </strong> y envialo a 
+          <a target="_blank" class="link-color" href="https://www.instagram.com/flycuadros_oficial/">FlyCuadros</a>`,
+          status: 'success',
+          url: 'una-url-que-tengo-que-generar'
+        },
+        panelClass: 'custom-snackbar'
+      }).afterOpened()),
+     /*  tap(() => {
+        let snackEl = document.body;
+        this.renderer2.listen(snackEl, 'click', () => this.closeSnackbar())
+      }), */
+      takeUntil(this.onDestroy$)
+    )
+    .subscribe(() => {
+      
     })
+  }
+
+  public closeSnackbar(): void {
+    this.snackBar.dismiss();
   }
 
   public onTeamChanges($event: any): void {

@@ -32,3 +32,16 @@ mat-drawer-content {
         background-image: linear-gradient(rgb(0 0 0/50%) 0 0);
     }
 }
+
+.custom-snackbar {
+    max-width: 800px !important;
+    width: 650px !important;
+}
+
+.success-color {
+    color: #15d015;
+}
+
+.link-color {
+    color:#0076ff
+}

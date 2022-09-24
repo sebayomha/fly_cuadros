@@ -12,11 +12,14 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
   ],
-  exports:[ MatSelectModule, MatTreeModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatCardModule, MatRippleModule, MatBottomSheetModule, MatListModule, MatChipsModule, MatDividerModule, MatDialogModule ],
+  exports:[ MatTooltipModule, ClipboardModule, MatSnackBarModule, MatSelectModule, MatTreeModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatCardModule, MatRippleModule, MatBottomSheetModule, MatListModule, MatChipsModule, MatDividerModule, MatDialogModule ],
   providers: [
     {provide: MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, useValue: {panelClass: 'bottom-sheet-custom-container', hasBackdrop: true}}
   ],
