@@ -1,5 +1,16 @@
 <section *ngIf="boxDetail$ | async as boxDetail">
-    Ingresaste a ver el catalogo del cuadro: {{boxDetail?.nombre}}
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title style="font-size: 32px">{{boxDetail?.nombre}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p style="margin-top: 16px; font-size: 16px;">
+              {{boxDetail.descripcion}}
+            </p>
+          <div>
+          </div>
+     </mat-card-content>
+    </mat-card>
 </section>
 
 <section class="filter-section">

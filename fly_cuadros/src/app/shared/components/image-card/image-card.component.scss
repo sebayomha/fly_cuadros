@@ -28,5 +28,11 @@
     button:not(.mat-button-disabled) {
       background-color: white !important;
     }
+    .carousel-indicators {
+      button {
+        width: 15px !important;
+        height: 15px !important;
+      }
+    }
   }
 }
