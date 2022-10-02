@@ -4,6 +4,8 @@ export interface Box {
     descripcion: string;
     nombre: string;
     id: string;
-    imagen: string;
+    imagenes: any[] | null;
+    imagen?: string;
     medida_data: Measure;
+    imagenSeleccionada?: any;
 }

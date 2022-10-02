@@ -15,15 +15,35 @@
   <mat-card-header>
     <div mat-card-avatar></div>
     <mat-card-title>{{cardInfo.nombre}}</mat-card-title>
-   <!--  <mat-card-subtitle *ngIf="cardInfo?.medida_data?.tamanio">
-      <mat-chip-list>
-        <mat-chip [color]="cardInfo?.medida_data?.color" selected> {{cardInfo?.medida_data?.tamanio}}</mat-chip>
-      </mat-chip-list>
-    </mat-card-subtitle> -->
   </mat-card-header>
-  <img mat-card-image [src]="cardInfo.imagen" (click)="openThumbnail()">
+  <img [src]="cardInfo.imagen" *ngIf="cardInfo.imagen; else carouselTemplate" mat-card-image />
+  <ng-template #carouselTemplate>
+    <div [style.height]="'400px'">
+      <mat-carousel
+        #matCarouselSlide
+        timings="250ms ease-in"
+        color="primary"
+        [autoplay]="false"
+        (click)="openThumbnail($event)"
+        maxWidth="auto"
+        [proportion]="100"
+        [slides]="cardInfo.imagenes?.length ?? 0"
+        [hideArrows]="false"
+        [hideIndicators]="false"
+        [useKeyboard]="true"
+        orientation="ltr"
+      >
+        <mat-carousel-slide
+          *ngFor="let slide of cardInfo.imagenes; let i = index"
+          [image]="slide.src"
+          overlayColor="#00000040"
+          [hideOverlay]="false"
+        ></mat-carousel-slide>
+      </mat-carousel>
+    </div>
+  </ng-template>
   <mat-card-content>
-    <p>
+    <p style="margin-top: 16px;">
       {{cardInfo.descripcion}}
     </p>
   <div>
@@ -38,11 +58,11 @@
 
 <ng-template #thumbNailDialog>
   <lib-ngx-image-zoom
-  [thumbImage]="cardInfo.imagen"
-  [fullImage]="cardInfo.imagen"
+  [thumbImage]="selectedImage.src"
+  [fullImage]="selectedImage.src"
   [enableLens]="true"
   [circularLens]="true"
-  [magnification]="2"
+  [magnification]="1.5"
   [lensWidth]="150"
   [lensHeight]="150"
 ></lib-ngx-image-zoom>

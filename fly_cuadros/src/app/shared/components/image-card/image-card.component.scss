@@ -22,3 +22,11 @@
   max-width: 100%;
   margin-left: 0px !important;
 }
+
+::ng-deep {
+  mat-carousel {
+    button:not(.mat-button-disabled) {
+      background-color: white !important;
+    }
+  }
+}

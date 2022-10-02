@@ -6,9 +6,9 @@
         <mat-card-content>
             <mat-list class="purchase-list">
                 <mat-list-item>
-                    <img mat-card-avatar [src]="painting.imagen">
+                    <img mat-card-avatar [src]="painting.imagenSeleccionada.src">
                     <a mat-list-item>
-                        <span mat-line>{{painting.nombre}}</span>
+                        <span mat-line>{{painting.nombre}} - {{painting.imagenSeleccionada.titulo}}</span>
                     </a>
                 </mat-list-item>
                 <mat-list-item>
