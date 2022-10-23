@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouteReuseStrategy, RouterModule, Routes } from '@angular/router';
-import { CustomReuseStrategy } from './core/reuse-strategy';
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
@@ -12,6 +11,11 @@ const routes: Routes = [
     path: 'cuadros',
     loadChildren: async () =>
     (await import('./features/painting/painting.module')).PaintingModule,
+  },
+  {
+    path: 'compras',
+    loadChildren: async () =>
+    (await import('./features/purchase/purchase.module')).PurchaseModule,
   },
   {
     path: '**',

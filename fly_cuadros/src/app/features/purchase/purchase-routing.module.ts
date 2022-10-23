@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PaintingCatalogComponent } from './painting-catalog.component';
 
 const routes: Routes = [
   {
     path: '',
     data: { animation: 'PaintingPage' },
     children: [
-      {
-        path: '',
-        component: PaintingCatalogComponent,
+      { 
+         path: ':id',
+         loadChildren: async () =>
+         (await import('./components/detail-purchase/detail-purchase.module')).DetailPurchaseModule
       }
-    ]
+     ]
   },
 ];
 
@@ -19,4 +19,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PaintingCatalogRoutingModule {}
+export class PurchaseRoutingModule {}

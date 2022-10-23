@@ -13,7 +13,6 @@ import { PurchaseOutput } from './purchase.model';
   styleUrls: ['./purchase.component.scss']
 })
 export class PurchaseComponent {
-
   public measures!: Measure[];
   public painting!: Painting;
   public readonly purchaseForm = this.formBuilder.group({
@@ -30,7 +29,6 @@ export class PurchaseComponent {
       this.measures = data.medidas
     }
 
-
   public measureChange({value}: MatSelectChange): void {
     this.purchaseForm.get('price')!.patchValue(value.precio)
   }
@@ -38,7 +36,7 @@ export class PurchaseComponent {
   public confirm(): void {
     this._bottomSheetRef.dismiss({
       event: EVENT_RESULT.CONFIRM,
-      data: {...this.purchaseForm, painting: this.painting}
+      data: {...this.purchaseForm.getRawValue(), painting: this.painting}
     });
   }
 

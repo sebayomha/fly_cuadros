@@ -1,0 +1,21 @@
+@import './../../../../shared/_variables.scss';
+.image-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 40px;
+    @media (max-width: $mobilePx) {
+        flex-direction: column;
+    }
+}
+
+.detail-container {
+    display: flex;;
+    gap: 20px;
+    div {
+        flex: 1 1 auto;
+    }
+    > div {
+        flex: 1 1 30%;
+    }
+}

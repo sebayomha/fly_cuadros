@@ -1,17 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PaintingCatalogComponent } from './painting-catalog.component';
+import { DetailPurchaseComponent } from './detail-purchase.component';
 
 const routes: Routes = [
   {
     path: '',
     data: { animation: 'PaintingPage' },
-    children: [
-      {
-        path: '',
-        component: PaintingCatalogComponent,
-      }
-    ]
+    component: DetailPurchaseComponent
   },
 ];
 
@@ -19,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PaintingCatalogRoutingModule {}
+export class DetailPurchaseRoutingModule {}

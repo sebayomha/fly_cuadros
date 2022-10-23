@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { filter, map, Observable, Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { EVENT_RESULT } from 'src/app/core/constants';
 import { Box } from 'src/app/features/dashboard/models/dashboard.model';
+import { PurchaseService } from 'src/app/shared/components/purchase/pruchase.service';
 import { PurchaseComponent } from 'src/app/shared/components/purchase/purchase.component';
 import { PurchaseOutput } from 'src/app/shared/components/purchase/purchase.model';
 import { ResultComponent } from 'src/app/shared/components/result/result.component';
@@ -28,7 +29,7 @@ export class PaintingCatalogComponent implements OnInit, OnDestroy {
     private readonly bottomSheet: MatBottomSheet,
     private readonly paintingService: PaintingServiceService,
     private readonly snackBar: MatSnackBar,
-    private readonly renderer2: Renderer2
+    private readonly purchaseService: PurchaseService
     ) { 
     this.paintingCode = activatedRoute.snapshot.paramMap.get('code') as string;
   }
@@ -50,6 +51,14 @@ export class PaintingCatalogComponent implements OnInit, OnDestroy {
     .pipe(
       filter((result: PurchaseOutput) =>  result && result.event === EVENT_RESULT.CONFIRM), 
       map((result) => result.data),
+      switchMap((data) => this.purchaseService.storePurchase({
+        idCuadro: data.painting.id,
+        idMedida: data.measure.id,
+        descripcionMedida: data.measure.tamanio,
+        precio: data.price,
+        imagen: data.painting.imagenSeleccionada.src,
+        tipoImagen: data.painting.imagenSeleccionada.titulo
+      })),
       switchMap(() => this.snackBar.openFromComponent(ResultComponent, {
         data: {
           message: `Reserva confirmada! 

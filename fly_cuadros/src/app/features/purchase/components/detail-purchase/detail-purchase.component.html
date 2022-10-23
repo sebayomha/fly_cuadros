@@ -1,0 +1,46 @@
+<ng-container *ngIf="viewReady$ | async as data">
+    <section class="detail-container">
+        <div>
+            <app-image-card [cardInfo]="data.painting" [showRipple]="false">
+            </app-image-card>
+        </div>
+        <div *ngIf="data.painting as painting">
+            <mat-card class="purchase-card">
+                <mat-card-header>
+                    <mat-card-title>Detalle de la compra #{{data.purchase?.id}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-list class="purchase-list">
+                        <mat-list-item>
+                            <div>
+                                <span mat-line>Nombre</span>
+                                <span mat-line>{{painting.nombre}}</span>
+                            </div>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <div>
+                                <span mat-line>Tipo imagen</span>
+                                <span mat-line>{{data?.purchase?.tipoImagen}}</span>
+                            </div>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <div>
+                                <span mat-line>Tamaño</span>
+                                <span mat-line>{{data?.purchase?.descripcionMedida}}</span>
+                            </div>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <div>
+                                <span style="font-size: 32px; font-weight: 500">{{data?.purchase?.precio | currency }}</span>
+                            </div>
+                        </mat-list-item>
+                    </mat-list>
+                    <mat-divider></mat-divider>
+                    <div>
+        
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </section>
+</ng-container>

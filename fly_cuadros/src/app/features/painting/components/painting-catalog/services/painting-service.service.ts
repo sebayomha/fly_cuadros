@@ -25,6 +25,10 @@ export class PaintingServiceService {
     }))
   }
 
+  public getPaintingDetail(paintingId: string): Observable<Painting | undefined> {
+    return this.db.collection<Painting>(FirebaseCollections.PAINTINGS).doc(paintingId).valueChanges()
+  }
+
   public getBoxDetail(paintingCode: string): Observable<Box | undefined> {
     return this.db.collection<Box>(FirebaseCollections.BOX_TYPES).doc(paintingCode).valueChanges()
   }
